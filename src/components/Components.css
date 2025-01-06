@@ -1,0 +1,76 @@
+/* Main container for the image hover effect */
+.image-hover-effect {
+    position: relative; /* Allows child elements to be positioned relative to this container */
+    display: inline-block; /* Ensures the image and its hover effect only occupy necessary space */
+    overflow: hidden; /* Hides any content that overflows the container */
+}
+
+/* Styling for the image inside the hover effect container */
+.image-hover-effect img {
+    transition: all 0.3s ease; /* Smooth transition effect for hover state */
+    width: 100%; /* Ensures the image spans the full width of the container */
+    height: auto; /* Maintains the aspect ratio of the image */
+}
+
+/* Overlay effect (initially transparent) for the hover effect */
+.image-hover-effect::before {
+    content: ''; /* Creates an empty pseudo-element for the overlay */
+    position: absolute; /* Positions the overlay relative to the container */
+    top: 0; /* Aligns the overlay to the top edge */
+    left: 0; /* Aligns the overlay to the left edge */
+    width: 100%; /* Matches the overlay size to the container width */
+    height: 100%; /* Matches the overlay size to the container height */
+    background-color: rgba(0, 0, 0, 0); /* Starts with a fully transparent black background */
+    transition: all 0.3s ease; /* Smooth transition for the overlay on hover */
+    z-index: 1; /* Ensures the overlay appears below the hover text */
+}
+
+/* Changes the overlay's appearance when hovered */
+.image-hover-effect:hover::before {
+    background-color: rgba(0, 0, 0, 0.3); /* Adds a semi-transparent black background */
+    backdrop-filter: blur(3px); /* Adds a subtle blur effect to the background */
+}
+
+/* Text displayed on hover, initially hidden */
+.hover-text {
+    position: absolute; /* Allows text to be placed over the image */
+    top: 50%; /* Centers the text vertically */
+    left: 50%; /* Centers the text horizontally */
+    transform: translate(-50%, -50%); /* Precisely centers the text using translation */
+    display: none; /* Hides the text initially */
+    color: #ffffff; /* Sets the text color to white for visibility */
+    font-weight: bolder; /* Makes the text bold */
+    padding: 10px; /* Adds space around the text for better readability */
+    border-radius: 5px; /* Adds rounded corners to the text background */
+    text-align: center; /* Centers the text content */
+    z-index: 2; /* Ensures the text appears above the overlay */
+}
+
+/* Displays the text when the image is hovered */
+.image-hover-effect:hover .hover-text {
+    display: block; /* Makes the text visible */
+}
+
+/* Custom styling for unordered lists */
+.custom-list {
+    list-style: none; /* Removes the default list bullets */
+    padding-left: 1.2rem; /* Adds padding to position custom bullets */
+}
+
+/* Individual list item styling */
+.custom-list li {
+    position: relative; /* Allows positioning of the custom bullet */
+    padding-left: 1.5rem; /* Creates space for the bullet */
+    text-indent: 0em; /* Ensures no extra indentation for the text */
+}
+
+/* Custom bullet styling for list items */
+.custom-list li::before {
+    content: "•"; /* Uses a Unicode bullet character */
+    position: absolute; /* Positions the bullet relative to the list item */
+    left: 0; /* Aligns the bullet to the left of the list item */
+    top: 0; /* Aligns the bullet vertically with the text */
+    font-size: 1.5rem; /* Sets the size of the bullet */
+    line-height: 1.5rem; /* Aligns the bullet with the line height of the text */
+    color: black; /* Sets the bullet color */
+}
